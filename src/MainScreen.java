@@ -1,4 +1,6 @@
-
+import java.io.*;
+import java.awt.FileDialog;
+import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,6 +31,8 @@ public class MainScreen extends javax.swing.JFrame {
         PathField = new javax.swing.JTextField();
         SelectButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtsonuc = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -62,6 +66,10 @@ public class MainScreen extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        txtsonuc.setColumns(20);
+        txtsonuc.setRows(5);
+        jScrollPane1.setViewportView(txtsonuc);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background.jpg"))); // NOI18N
         jLabel6.setText("jLabel6");
@@ -126,6 +134,9 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(140, 140, 140)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
@@ -139,6 +150,9 @@ public class MainScreen extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
+                .addGap(360, 360, 360)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(94, 94, 94)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -146,16 +160,10 @@ public class MainScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PathFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PathFieldActionPerformed
-     
-      
-        
-       
-    }//GEN-LAST:event_PathFieldActionPerformed
-
     private void SelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectButtonActionPerformed
-         
+        
         JFileChooser fc = new JFileChooser();
+       
         FileNameExtensionFilter filter1 =new FileNameExtensionFilter(
         "PDF","pdf");
         FileNameExtensionFilter filter2 =new FileNameExtensionFilter(
@@ -170,26 +178,65 @@ public class MainScreen extends javax.swing.JFrame {
         fc.setFileFilter(filter4);
         
         int returnVal;
-        //returnVal = fc.showOpenDialog(parent);
+        String path ="";
+        String fileName = "";
+
         fc.setCurrentDirectory(new java.io.File("C:\\Users\\Ramazan\\Desktop"));
         fc.setDialogTitle("Select A File");
         returnVal = fc.showDialog(this, "Select");
         
-        
-        JOptionPane.showMessageDialog(null,""+fc.getSelectedFile().getAbsolutePath(),"Direction",JOptionPane.ERROR_MESSAGE);
-        System.exit(0);
-
-      /*  fc.setCurrentDirectory(new java.io.File("C:\\Users\\Ramazan\\Desktop"));
-        fc.setDialogTitle("Select A File");
-        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES); 
-        if(fc.showOpenDialog(SelectButton)==JFileChooser.APPROVE_OPTION){
-           JOptionPane.showMessageDialog(this,"Your Chose :"+fc.getSelectedFile().getAbsolutePath());
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            path  =   fc.getSelectedFile().getName();
+            fileName= fc.getSelectedFile().getAbsolutePath();
+            PathField.setText(path);
         }
-        System.out.println("Your Chose :"+fc.getSelectedFile().getAbsolutePath());*/
+       
+        String line = null;
+
+        try {
+            File fileDir = 
+                new File(fileName);
+            BufferedReader in = new BufferedReader(
+		   new InputStreamReader(
+                      new FileInputStream(fileDir), "ISO-8859-9"));
+               txtsonuc.setText("");
+            while((line = in.readLine()) != null) {
+               txtsonuc.append(line+"\n");
+               // şimdi counter butonuna tıkladığımda aa.txt içerisindeki her hafi sayacak boşluk hariç ve bi yere sonuç olarak verecek.
+               // her harften kaç tane olduğunumu sayacak 
+               //yok mesela dosya içersinde  receprr yazıyor diyelim  7 harf var diyecek tamam
+            }   
+
+            // Always close files.
+            in.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                "Unable to open file '" + 
+                fileName + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println(
+                "Error reading file '" 
+                + fileName + "'");                  
+            // Or we could just do this: 
+            // ex.printStackTrace();
+        }
+
+     
     }//GEN-LAST:event_SelectButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        int length=0;
+        if(txtsonuc.getText().length()>0)
+        {
+            String ss;
+            ss=txtsonuc.getText();
+            ss= ss.replaceAll("\\s+", "");
+            length= ss.length();
+            jButton2.setText(Integer.toString(length));
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -199,6 +246,10 @@ public class MainScreen extends javax.swing.JFrame {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
        this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void PathFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PathFieldActionPerformed
+
+    }//GEN-LAST:event_PathFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,5 +297,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtsonuc;
     // End of variables declaration//GEN-END:variables
 }
