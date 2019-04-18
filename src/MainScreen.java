@@ -5,7 +5,19 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.StringTokenizer;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.io.BufferedReader;
+import java.io.FileReader;
+/*import org.apache.poi.hwpf.HWPFDocument;*/
 
 /**
  *
@@ -25,6 +37,7 @@ public class MainScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         PathField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         SelectButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -39,11 +52,23 @@ public class MainScreen extends javax.swing.JFrame {
         setUndecorated(true);
 
         PathField.setEditable(false);
-        PathField.setText("ASDASDSA");
+        PathField.setBackground(new java.awt.Color(203, 236, 248));
+        PathField.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
+        PathField.setForeground(new java.awt.Color(135, 131, 131));
+        PathField.setText("File Name");
         PathField.setPreferredSize(new java.awt.Dimension(151, 35));
         PathField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PathFieldActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Word");
+        jButton1.setMaximumSize(new java.awt.Dimension(77, 25));
+        jButton1.setMinimumSize(new java.awt.Dimension(77, 25));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -55,7 +80,7 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Counter");
+        jButton2.setText("Letter");
         jButton2.setPreferredSize(new java.awt.Dimension(151, 35));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +132,7 @@ public class MainScreen extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(24, 24, 24))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -123,13 +148,16 @@ public class MainScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(SelectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(250, 250, 250)
                 .addComponent(PathField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(SelectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -139,23 +167,50 @@ public class MainScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(PathField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SelectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PathField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(SelectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(360, 360, 360)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(94, 94, 94)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+   /* public void readDocFile(String fileName) throws FileNotFoundException{
+        try{
+            File file =new File(fileName);
+            FileInputStream fis =new FileInputStream(file.getAbsolutePath());
+            HWPFDocument doc = new HWPFDocument(fis);
+            WordExtractor we = new WordExtractor(doc);
+            String[] paragraphs = we.getParagraphText();
+			
+			System.out.println("Total no of paragraph "+paragraphs.length);
+			for (String para : paragraphs) {
+				System.out.println(para.toString());
+			}
+			fis.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		
+        }
+        
+        
+    }
+    */
+    
+    
+    
     public void TxtReader(String fileName)
     {
     String line = null;
@@ -168,7 +223,21 @@ public class MainScreen extends javax.swing.JFrame {
                txtsonuc.setText("");
             while((line = in.readLine()) != null) {
                txtsonuc.append(line+"\n");
-            }   
+      //-------------------------------------------------------------//
+               
+            } 
+            BufferedReader br = new BufferedReader(in);
+               String a = br.readLine ();
+               int count = 0;
+               while (a != null) {
+               String []parts = a.split(" ");
+               for( String w : parts)
+               {
+               count++;        
+               }
+                a = br.readLine();
+                txtsonuc1.setText("");
+               }
             in.close();         
         }
         catch(FileNotFoundException ex) {
@@ -183,7 +252,15 @@ public class MainScreen extends javax.swing.JFrame {
            
         }
     }
-   /*  public  void readDocxFile(String fileName) {
+    
+    
+    
+    
+    
+    
+    
+    
+   /* public  void readDocxFile(String fileName) {
 
 		try {
 			File file = new File(fileName);
@@ -265,6 +342,18 @@ public class MainScreen extends javax.swing.JFrame {
 
     }//GEN-LAST:event_PathFieldActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       int length=0;
+        if(txtsonuc.getText().length()>0)
+        {
+            String ss;
+            ss=txtsonuc.getText();
+            ss= ss.replaceAll("\\s+", "");
+            length= ss.length();
+            jButton1.setText(Integer.toString(length));
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -305,6 +394,7 @@ public class MainScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField PathField;
     private javax.swing.JButton SelectButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
