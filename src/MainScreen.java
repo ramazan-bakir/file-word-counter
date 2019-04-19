@@ -224,19 +224,35 @@ public class MainScreen extends javax.swing.JFrame {
             while((line = in.readLine()) != null) {
                txtsonuc.append(line+"\n");
       //-------------------------------------------------------------//
-               
-            } 
-            BufferedReader br = new BufferedReader(in);
-               String a = br.readLine ();
-               int count = 0;
-               while (a != null) {
-               String []parts = a.split(" ");
-               for( String w : parts)
-               {
-               count++;        
-               }
-                a = br.readLine();
-                txtsonuc1.setText("");
+////             String a=null;
+////                try{
+////                    File fileWord=
+////                            new File(fileName);
+////                    BufferedReader br=new BufferedReader(
+////                    
+////                            new InputStreamReader(
+////                                    new FileInputStream(fileWord),"ISO-8859-9"));               
+////                    txtsonuc.setText("");
+////                    while((a = br.readLine()) !=null ){
+////                        txtsonuc.append(br+"\n");
+////                    }
+////                
+////                }
+////                catch(IOException ex){
+////                    
+////                }
+////            } 
+//            BufferedReader br = new BufferedReader(in);
+//               String a = br.readLine ();
+//               int count = 0;
+//               while (a != null) {
+//               String []parts = a.split(" ");
+//               for( String w : parts)
+//               {
+//               count++;        
+//               }
+//                a = br.readLine();
+//                txtsonuc.setText("");
                }
             in.close();         
         }
@@ -348,8 +364,8 @@ public class MainScreen extends javax.swing.JFrame {
         {
             String ss;
             ss=txtsonuc.getText();
-            ss= ss.replaceAll("\\s+", "");
-            length= ss.length();
+            String[] dize = ss.split(" ");
+            length= dize.length;
             jButton1.setText(Integer.toString(length));
         }
     }//GEN-LAST:event_jButton1ActionPerformed
