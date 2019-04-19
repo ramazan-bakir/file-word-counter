@@ -1,23 +1,11 @@
 import java.io.*;
-import java.awt.FileDialog;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.StringTokenizer;
-import java.util.concurrent.LinkedBlockingQueue;
 import java.io.BufferedReader;
-import java.io.FileReader;
-/*import org.apache.poi.hwpf.HWPFDocument;*/
+//import org.apache.poi.hwpf.HWPFDocument;
 
 /**
  *
@@ -181,7 +169,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(94, 94, 94)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
         );
 
         pack();
@@ -209,6 +197,17 @@ public class MainScreen extends javax.swing.JFrame {
     }
     */
     
+    
+    /*public void _PdfReader_(String fileName)
+    {
+            PDDocument document = PDDocument.load(new File(fileName));
+            if (!document.isEncrypted()) {
+                PDFTextStripper stripper = new PDFTextStripper();
+                String text = stripper.getText(document);
+                txtsonuc.setText(text);
+            }
+document.close();
+    }*/
     
     
     public void TxtReader(String fileName)
@@ -323,16 +322,35 @@ public class MainScreen extends javax.swing.JFrame {
         returnVal = fc.showDialog(this, "Select");
         
         if(returnVal == JFileChooser.APPROVE_OPTION) {
-            path  =   fc.getSelectedFile().getName();
-            fileName= fc.getSelectedFile().getAbsolutePath();
-            PathField.setText(path);
+            
+             path  =   fc.getSelectedFile().getName();
+             fileName= fc.getSelectedFile().getAbsolutePath();
+             PathField.setText(path);
+           
         }
+        
        
-        TxtReader(fileName);
+       if(getFileExtension(path).equals("txt") || getFileExtension(path).equals("docx") || getFileExtension(path).equals("doc") || getFileExtension(path).equals("pdf"))       
+       {
+         TxtReader(fileName);
+       }
+       else
+         txtsonuc.setText("Geçirsiz Format");
 
      
     }//GEN-LAST:event_SelectButtonActionPerformed
-
+    
+    private String getFileExtension(String file)
+    {
+        String Extension;
+        int index = file.lastIndexOf('.');
+        if (index >= 0){
+            Extension=file.substring(index+1);
+            return Extension;
+        }
+        return "empty";
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int length=0;
         if(txtsonuc.getText().length()>0)
@@ -364,6 +382,7 @@ public class MainScreen extends javax.swing.JFrame {
         {
             String ss;
             ss=txtsonuc.getText();
+            ss =ss.trim().replaceAll("\\s+", " ");//trim methodu kullanılarak boşluğu fazladan saymayı engelledi.
             String[] dize = ss.split(" ");
             length= dize.length;
             jButton1.setText(Integer.toString(length));
