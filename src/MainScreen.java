@@ -1,3 +1,4 @@
+import java.awt.List;
 import java.io.*;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -5,12 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.IOException;
 import java.io.BufferedReader;
-//import org.apache.poi.hwpf.HWPFDocument;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.poi.hwpf.HWPFDocument;
+import org.apache.poi.hwpf.extractor.WordExtractor;
+//import org.apache.pdfbox.util.PDFTextStripper
 
-/**
- *
- * @author Ramazan
- */
+
 public class MainScreen extends javax.swing.JFrame {
     
     
@@ -175,7 +177,7 @@ public class MainScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   /* public void readDocFile(String fileName) throws FileNotFoundException{
+ /*  public void readDocFile(String fileName) throws FileNotFoundException{
         try{
             File file =new File(fileName);
             FileInputStream fis =new FileInputStream(file.getAbsolutePath());
@@ -191,14 +193,12 @@ public class MainScreen extends javax.swing.JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		
-        }
-        
-        
-    }
-    */
+        }   
+    }*/
     
     
-    /*public void _PdfReader_(String fileName)
+    
+    public void _PdfReader_(String fileName) throws IOException
     {
             PDDocument document = PDDocument.load(new File(fileName));
             if (!document.isEncrypted()) {
@@ -206,8 +206,8 @@ public class MainScreen extends javax.swing.JFrame {
                 String text = stripper.getText(document);
                 txtsonuc.setText(text);
             }
-document.close();
-    }*/
+    document.close();
+    }  
     
     
     public void TxtReader(String fileName)
@@ -275,7 +275,7 @@ document.close();
     
     
     
-   /* public  void readDocxFile(String fileName) {
+/*   public  void readDocxFile(String fileName) {
 
 		try {
 			File file = new File(fileName);
