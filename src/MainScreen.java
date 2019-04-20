@@ -6,11 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.IOException;
 import java.io.BufferedReader;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.poi.hwpf.HWPFDocument;
-import org.apache.poi.hwpf.extractor.WordExtractor;
-//import org.apache.pdfbox.util.PDFTextStripper
+
 
 
 public class MainScreen extends javax.swing.JFrame {
@@ -23,7 +19,7 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         PathField = new javax.swing.JTextField();
@@ -175,41 +171,8 @@ public class MainScreen extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-
- /*  public void readDocFile(String fileName) throws FileNotFoundException{
-        try{
-            File file =new File(fileName);
-            FileInputStream fis =new FileInputStream(file.getAbsolutePath());
-            HWPFDocument doc = new HWPFDocument(fis);
-            WordExtractor we = new WordExtractor(doc);
-            String[] paragraphs = we.getParagraphText();
-			
-			System.out.println("Total no of paragraph "+paragraphs.length);
-			for (String para : paragraphs) {
-				System.out.println(para.toString());
-			}
-			fis.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		
-        }   
-    }*/
-    
-    
-    
-    public void _PdfReader_(String fileName) throws IOException
-    {
-            PDDocument document = PDDocument.load(new File(fileName));
-            if (!document.isEncrypted()) {
-                PDFTextStripper stripper = new PDFTextStripper();
-                String text = stripper.getText(document);
-                txtsonuc.setText(text);
-            }
-    document.close();
-    }  
-    
-    
+    }// </editor-fold>                        
+  
     public void TxtReader(String fileName)
     {
     String line = null;
@@ -222,40 +185,9 @@ public class MainScreen extends javax.swing.JFrame {
                txtsonuc.setText("");
             while((line = in.readLine()) != null) {
                txtsonuc.append(line+"\n");
-      //-------------------------------------------------------------//
-////             String a=null;
-////                try{
-////                    File fileWord=
-////                            new File(fileName);
-////                    BufferedReader br=new BufferedReader(
-////                    
-////                            new InputStreamReader(
-////                                    new FileInputStream(fileWord),"ISO-8859-9"));               
-////                    txtsonuc.setText("");
-////                    while((a = br.readLine()) !=null ){
-////                        txtsonuc.append(br+"\n");
-////                    }
-////                
-////                }
-////                catch(IOException ex){
-////                    
-////                }
-////            } 
-//            BufferedReader br = new BufferedReader(in);
-//               String a = br.readLine ();
-//               int count = 0;
-//               while (a != null) {
-//               String []parts = a.split(" ");
-//               for( String w : parts)
-//               {
-//               count++;        
-//               }
-//                a = br.readLine();
-//                txtsonuc.setText("");
-               }
+            }
             in.close();         
-        }
-        catch(FileNotFoundException ex) {
+        }catch(FileNotFoundException ex) {
             System.out.println(
                 "Unable to open file '" + 
                 fileName + "'");                
@@ -268,35 +200,7 @@ public class MainScreen extends javax.swing.JFrame {
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
-/*   public  void readDocxFile(String fileName) {
-
-		try {
-			File file = new File(fileName);
-			FileInputStream fis = new FileInputStream(file.getAbsolutePath());
-
-			XWPFDocument document = new XWPFDocument(fis);
-
-			List<XWPFParagraph> paragraphs = document.getParagraphs();
-			
-			System.out.println("Total no of paragraph "+paragraphs.size());
-			for (XWPFParagraph para : paragraphs) {
-				System.out.println(para.getText());
-			}
-			fis.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	} */
-
-    
-    private void SelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectButtonActionPerformed
+    private void SelectButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         
         JFileChooser fc = new JFileChooser();
        
@@ -338,7 +242,7 @@ public class MainScreen extends javax.swing.JFrame {
          txtsonuc.setText("Geçirsiz Format");
 
      
-    }//GEN-LAST:event_SelectButtonActionPerformed
+    }                                            
     
     private String getFileExtension(String file)
     {
@@ -351,7 +255,7 @@ public class MainScreen extends javax.swing.JFrame {
         return "empty";
     }
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         int length=0;
         if(txtsonuc.getText().length()>0)
         {
@@ -362,21 +266,21 @@ public class MainScreen extends javax.swing.JFrame {
             jButton2.setText(Integer.toString(length));
         }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }                                        
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {                                     
         System.exit(0);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }                                    
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {                                     
        this.setState(JFrame.ICONIFIED);
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }                                    
 
-    private void PathFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PathFieldActionPerformed
+    private void PathFieldActionPerformed(java.awt.event.ActionEvent evt) {                                          
 
-    }//GEN-LAST:event_PathFieldActionPerformed
+    }                                         
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
        int length=0;
         if(txtsonuc.getText().length()>0)
         {
@@ -387,7 +291,7 @@ public class MainScreen extends javax.swing.JFrame {
             length= dize.length;
             jButton1.setText(Integer.toString(length));
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }                                        
 
     /**
      * @param args the command line arguments
@@ -426,7 +330,7 @@ public class MainScreen extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JTextField PathField;
     private javax.swing.JButton SelectButton;
     private javax.swing.JButton jButton1;
@@ -438,5 +342,5 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtsonuc;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
