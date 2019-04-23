@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package word.counter.v3;
 
 import javax.swing.JFileChooser;
@@ -15,54 +10,12 @@ import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.IOException;
 import java.io.BufferedReader;
-//import org.apache.pdfbox.pdmodel.PDDocument;
-//import org.apache.pdfbox.text.PDFTextStripper;
-//import org.apache.poi.hwpf.HWPFDocument;
-//import org.apache.poi.hwpf.extractor.WordExtractor;
 
-/**
- *
- * @author Ramazan
- */
-public class Wordcounter_v3 extends javax.swing.JFrame {
-
-    /**
-     * Creates new form NewJFrame
-     */
-    public Wordcounter_v3() {
-        initComponents();
+public class WordCounterTR extends javax.swing.JFrame {
+    public WordCounterTR() {
+       initComponents();
         this.setLocationRelativeTo(null);
     }
-
-
- public void TxtReader(String fileName)
-    {
-    String line = null;
-        try {
-            File fileDir = 
-                new File(fileName);
-            BufferedReader in = new BufferedReader(
-		   new InputStreamReader(
-                      new FileInputStream(fileDir), "ISO-8859-9"));
-               txtsonuc.setText("");
-            while((line = in.readLine()) != null) {
-               txtsonuc.append(line+"\n");
-               }
-            in.close();         
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                "Unable to open file '" + 
-                fileName + "'");                
-        }
-        catch(IOException ex) {
-            System.out.println(
-                "Error reading file '" 
-                + fileName + "'");                  
-           
-        }
-    }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -83,16 +36,14 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        LangLabel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,7 +60,7 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
 
         PathField.setEditable(false);
         PathField.setFont(new java.awt.Font("Yu Gothic Medium", 2, 18)); // NOI18N
-        PathField.setText("File Name");
+        PathField.setText("Dosya Adı");
 
         jLabel13.setBackground(new java.awt.Color(24, 220, 255));
         jLabel13.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
@@ -137,7 +88,7 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
         jTextField2.setBackground(new java.awt.Color(24, 220, 255));
         jTextField2.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("Word");
+        jTextField2.setText("Kelime");
         jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +100,7 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
         jTextField3.setBackground(new java.awt.Color(24, 220, 255));
         jTextField3.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setText("Letter");
+        jTextField3.setText("Harf");
         jTextField3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,26 +180,19 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(75, 75, 75));
         jLabel1.setFont(new java.awt.Font("Yu Gothic Light", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(75, 75, 75));
-        jLabel1.setText("Counting");
+        jLabel1.setText("Saydırma");
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic Light", 0, 55)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Word and Letter ");
+        jLabel2.setText("Kelime ve Harf");
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Light", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(75, 75, 75));
-        jLabel3.setText("File Name");
-
-        jLabel5.setFont(new java.awt.Font("Yu Gothic Light", 0, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(75, 75, 75));
-        jLabel5.setText("Type");
+        jLabel3.setText("Dosya Adı");
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic Light", 0, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(75, 75, 75));
-        jLabel6.setText("Select File");
-
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ramazan\\Documents\\NetBeansProjects\\word-counter\\icons\\sorting_options_filled_60px.png")); // NOI18N
+        jLabel6.setText("Dosya Seç");
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ramazan\\Documents\\NetBeansProjects\\word-counter\\icons\\ok_60px.png")); // NOI18N
@@ -265,17 +209,14 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/word/counter/v3/Back To_60px.png"))); // NOI18N
-        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+        LangLabel.setForeground(new java.awt.Color(255, 255, 255));
+        LangLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/word/counter/v3/Back To_60px.png"))); // NOI18N
+        LangLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LangLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
+                LangLabelMouseClicked(evt);
             }
         });
-
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/word/counter/v3/inscription_80px.png"))); // NOI18N
 
         jPanel6.setBackground(new java.awt.Color(24, 220, 255));
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -293,9 +234,10 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(jLabel12)
-                .addGap(0, 60, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,29 +247,28 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/word/counter/v3/inscription_80px.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
+                .addComponent(LangLabel)
                 .addGap(1, 1, 1)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(42, 42, 42)
-                        .addComponent(jLabel3)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel5))
+                        .addComponent(jLabel3))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
-                                .addGap(143, 143, 143)
+                                .addGap(146, 146, 146)
                                 .addComponent(jLabel7)
-                                .addGap(128, 128, 128)
-                                .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
@@ -335,9 +276,9 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)))
                         .addComponent(jLabel9)))
-                .addGap(136, 136, 136)
+                .addGap(186, 186, 186)
                 .addComponent(jLabel15)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -357,17 +298,15 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
                                 .addComponent(jLabel9))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGap(38, 38, 38)
-                                .addComponent(jLabel11)))
+                                .addComponent(LangLabel)))
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel5)
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel8)))
+                            .addComponent(jLabel10)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -429,69 +368,8 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jLabel4MouseClicked
-
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-       System.exit(0);
-    }//GEN-LAST:event_jLabel11MouseClicked
-
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
- JFileChooser fc = new JFileChooser();
-       
-        FileNameExtensionFilter filter1 =new FileNameExtensionFilter(
-        "PDF","pdf");
-        FileNameExtensionFilter filter2 =new FileNameExtensionFilter(
-        "DOC","doc");
-        FileNameExtensionFilter filter3 =new FileNameExtensionFilter(
-        "DOCX","docx");
-        FileNameExtensionFilter filter4 =new FileNameExtensionFilter(
-        "TXT","txt");
-        fc.setFileFilter(filter1);
-        fc.setFileFilter(filter2);
-        fc.setFileFilter(filter3);
-        fc.setFileFilter(filter4);
-        
-        int returnVal;
-        String path ="";
-        String fileName = "";
-
-        fc.setCurrentDirectory(new java.io.File("C:\\Users\\Ramazan\\Desktop"));
-        fc.setDialogTitle("Select A File");
-        returnVal = fc.showDialog(this, "Select");
-        
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
-            
-             path  =   fc.getSelectedFile().getName();
-             fileName= fc.getSelectedFile().getAbsolutePath();
-             PathField.setText(path);
-           
-        }
-        
-       
-       if(getFileExtension(path).equals("txt") || getFileExtension(path).equals("docx") || getFileExtension(path).equals("doc") || getFileExtension(path).equals("pdf"))       
-       {
-         TxtReader(fileName);
-       }
-       else
-         txtsonuc.setText("Invalid Format");
-
-    }//GEN-LAST:event_jLabel10MouseClicked
-
-    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-       int length=0;
-        if(txtsonuc.getText().length()>0)
-        {
-            String ss;
-            ss=txtsonuc.getText();
-            ss= ss.replaceAll("\\s+", "");
-            length= ss.length();
-           //jButton2.setText(Integer.toString(length));
-        }
-    }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         int length=0;
@@ -501,12 +379,12 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
             ss=txtsonuc.getText();
             ss= ss.replaceAll("\\s+", "");
             length= ss.length();
-           jLabel13.setText(Integer.toString(length));
+            jLabel13.setText(Integer.toString(length));
         }
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-      int length=0;
+        int length=0;
         if(txtsonuc.getText().length()>0)
         {
             String ss;
@@ -519,62 +397,88 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel16MouseClicked
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        
+
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        
+
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private String getFileExtension(String file)
-    {
-        String Extension;
-        int index = file.lastIndexOf('.');
-        if (index >= 0){
-            Extension=file.substring(index+1);
-            return Extension;
-        }
-        return "empty";
-    }
-    
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Wordcounter_v3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Wordcounter_v3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Wordcounter_v3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Wordcounter_v3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel4MouseClicked
 
-        /* Create and display the form */
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        JFileChooser fc = new JFileChooser();
+
+        FileNameExtensionFilter filter1 =new FileNameExtensionFilter(
+            "PDF","pdf");
+        FileNameExtensionFilter filter2 =new FileNameExtensionFilter(
+            "DOC","doc");
+        FileNameExtensionFilter filter3 =new FileNameExtensionFilter(
+            "DOCX","docx");
+        FileNameExtensionFilter filter4 =new FileNameExtensionFilter(
+            "TXT","txt");
+        fc.setFileFilter(filter1);
+        fc.setFileFilter(filter2);
+        fc.setFileFilter(filter3);
+        fc.setFileFilter(filter4);
+
+        int returnVal;
+        String path ="";
+        String fileName = "";
+
+        fc.setCurrentDirectory(new java.io.File("C:\\Users\\Ramazan\\Desktop"));
+        fc.setDialogTitle("Dosya Seç");
+        returnVal = fc.showDialog(this, "Seç");
+
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+
+            path  =   fc.getSelectedFile().getName();
+            fileName= fc.getSelectedFile().getAbsolutePath();
+            PathField.setText(path);
+
+        }
+
+        if(getFileExtension(path).equals("txt") || getFileExtension(path).equals("docx") || getFileExtension(path).equals("doc") || getFileExtension(path).equals("pdf"))
+        {
+            TxtReader(fileName);
+        }
+        else
+        txtsonuc.setText("Geçersiz Format");
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void LangLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LangLabelMouseClicked
+       WelcomePage Lang=new WelcomePage();
+       Lang.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_LangLabelMouseClicked
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        int length=0;
+        if(txtsonuc.getText().length()>0)
+        {
+            String ss;
+            ss=txtsonuc.getText();
+            ss= ss.replaceAll("\\s+", "");
+            length= ss.length();
+          
+        }
+    }//GEN-LAST:event_jPanel6MouseClicked
+
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Wordcounter_v3().setVisible(true);
+                new WordCounterTR().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LangLabel;
     private javax.swing.JTextField PathField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
@@ -582,10 +486,8 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -598,4 +500,41 @@ public class Wordcounter_v3 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextArea txtsonuc;
     // End of variables declaration//GEN-END:variables
+
+   private Object getFileExtension(String file) {
+        String Extension;
+        int index = file.lastIndexOf('.');
+        if (index >= 0){
+            Extension=file.substring(index+1);
+            return Extension;
+        }
+        return "empty";
+    }
+
+    public void TxtReader(String fileName) {
+    String line = null;
+        try {
+            File fileDir = 
+                new File(fileName);
+            BufferedReader in = new BufferedReader(
+		   new InputStreamReader(
+                      new FileInputStream(fileDir), "ISO-8859-9"));
+               txtsonuc.setText("");
+            while((line = in.readLine()) != null) {
+               txtsonuc.append(line+"\n");
+               }
+            in.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                "Unable to open file '" + 
+                fileName + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println(
+                "Error reading file '" 
+                + fileName + "'");                  
+           
+        }
+    }
 }
